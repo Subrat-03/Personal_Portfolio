@@ -1,153 +1,3 @@
-/* global reset + safe box-sizing */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-/* prefer mobile-first scaling */
-html {
-  font-size: 16px;
-}
-
-/* base */
-body {
-  font-family: "Poppins", sans-serif;
-  line-height: 1.4;
-  -webkit-font-smoothing: antialiased;
-}
-
-/* make main container responsive */
-.container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1rem;
-  /* safe side padding on small screens */
-}
-
-/* images and embeds */
-img,
-picture,
-video {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-
-
-
-/* header / hero */
-.header-title {
-  /* clamp keeps font responsive across devices */
-  font-size: clamp(1.25rem, 4.5vw, 2.5rem);
-  /* min, viewport-based, max */
-  line-height: 1.1;
-  margin-bottom: 0.25rem;
-}
-
-.header-sub {
-  font-size: clamp(0.75rem, 2.5vw, 1rem);
-  opacity: 0.9;
-}
-
-/* if your header is fixed at top, add body offset */
-.header-fixed {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 999;
-}
-
-body.header-has-fixed {
-  /* adjust this value to header's actual height (use devtools to verify) */
-  padding-top: 4.5rem;
-}
-
-
-
-
-
-/* nav basics */
-.navbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 0.5rem 0;
-}
-
-.nav-links {
-  display: none;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-/* small-screen toggle button */
-.nav-toggle {
-  display: block;
-  border: none;
-  background: transparent;
-  font-size: 1rem;
-}
-
-/* show desktop nav from tablet up */
-@media (min-width:768px) {
-  .nav-toggle {
-    display: none;
-  }
-
-  .nav-links {
-    display: flex;
-  }
-}
-
-
-
-
-/* readable body text on small screens */
-.content p {
-  font-size: 0.95rem;
-  line-height: 1.6;
-  word-break: break-word;
-  overflow-wrap: anywhere;
-}
-
-/* buttons more clickable on mobile */
-.btn {
-  padding: 0.55rem 0.9rem;
-  border-radius: 8px;
-  font-size: 0.95rem;
-}
-
-/* project grid — single column mobile, auto-fit on larger screens */
-.grid {
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: 1fr;
-  /* mobile first */
-}
-
-@media (min-width:768px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width:1200px) {
-  .grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-
-
-
-
 /* =========================================
    1. GLOBAL / COLORS / FONTS
    ========================================= */
@@ -351,6 +201,19 @@ a:hover {
   align-items: center
 }
 
+/* Center the Download Resume button in intro section */
+.intro .buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.intro .buttons .btn.primary {
+  text-align: center;
+}
+
+
 .btn {
   border-radius: 999px;
   padding: .7rem 1.6rem;
@@ -363,7 +226,7 @@ a:hover {
 
 .btn.primary {
   background: var(--accent-color);
-  color: #fff
+  color: #010000
 }
 
 .btn.primary:hover {
@@ -377,6 +240,9 @@ a:hover {
   color: #fff;
   transform: translateY(-3px)
 }
+
+
+
 
 /* =========================================
    SECTIONS & CARDS
