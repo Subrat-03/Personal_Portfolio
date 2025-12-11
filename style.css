@@ -1,0 +1,692 @@
+/* =========================================
+   1. GLOBAL / COLORS / FONTS
+   ========================================= */
+:root {
+  --bg-dark: #0f1113;
+  --card-dark: #17181a;
+  --text-white: #ffffff;
+  --text-body: #b8b8b8;
+  --accent-color: #FF4D4D;
+  /* changed to Cyan */
+  --accent-hover: #00BBD4;
+  /* darker Cyan for hover */
+  --accent-cyan: #FF4D4D;
+  /* unified to Cyan */
+  --font-main: "Poppins", sans-serif;
+  --font-heading: "Roboto Slab", serif;
+  --header-height: 72px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth
+}
+
+html,
+body {
+  height: 100%
+}
+
+body {
+  font-family: var(--font-main);
+  font-size: 16px;
+  line-height: 1.7;
+  background-color: var(--bg-dark);
+  color: var(--text-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding-top: var(--header-height) !important;
+}
+
+/* Utility container */
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: 0 auto
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-heading);
+  color: var(--text-white)
+}
+
+p,
+li,
+span,
+input,
+textarea {
+  font-family: var(--font-main);
+  color: var(--text-body)
+}
+
+/* Links */
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: color .25s ease
+}
+
+a:hover {
+  color: var(--accent-hover)
+}
+
+/* =========================================
+   HEADER / NAV
+   ========================================= */
+/* PERFECT STICKY NAVBAR (NO BLUR, SOLID, ALWAYS ON TOP) */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 5000;
+  width: 100%;
+  background: #0f1113;  /* solid header */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 1rem 0;
+}
+
+
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.2rem;
+  padding: 1rem 0;
+  flex-wrap: wrap
+}
+
+.brand-block h1.site-title {
+  font-size: 2.2rem;
+  margin-bottom: 6px;
+  line-height: 1
+}
+
+.brand-block p.muted {
+  color: #cfcfcf;
+  font-weight: 600;
+  font-size: 0.95rem;
+  line-height: 1.4
+}
+
+/* Nav */
+.main-nav ul {
+  display: flex;
+  gap: 1.2rem;
+  list-style: none;
+  align-items: center
+}
+
+.main-nav ul li a {
+  color: var(--text-white);
+  font-weight: 600;
+  font-size: 0.95rem;
+  position: relative;
+  padding: 6px 2px
+}
+
+.main-nav ul li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 3px;
+  background: var(--accent-color);
+  transition: width .28s ease
+}
+
+.main-nav ul li a:hover::after {
+  width: 100%
+}
+
+
+/* =========================================
+   HERO / INTRO
+   ========================================= */
+.intro {
+  padding: 4.5rem 0 3.5rem;
+  text-align: center
+}
+
+.intro-inner {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap
+}
+
+.profile-pic img {
+  width: 220px;
+  height: 270px;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 2px solid var(--accent-color);
+  box-shadow: 0 8px 30px rgba(0, 229, 255, 0.14);
+  transition: transform .3s ease
+}
+
+.profile-pic img:hover {
+  transform: scale(1.03)
+}
+
+.intro-text {
+  max-width: 680px;
+  text-align: left
+}
+
+.intro-text h2 {
+  font-size: 2.2rem;
+  margin-bottom: 0.75rem
+}
+
+.intro-text h2 span {
+  color: var(--accent-color)
+}
+
+.buttons {
+  margin-top: 1.75rem;
+  display: flex;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+  align-items: center
+}
+
+.btn {
+  border-radius: 999px;
+  padding: .7rem 1.6rem;
+  font-weight: 700;
+  border: 2px solid var(--accent-color);
+  background: transparent;
+  color: var(--accent-color);
+  transition: all .25s ease
+}
+
+.btn.primary {
+  background: var(--accent-color);
+  color: #fff
+}
+
+.btn.primary:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+  transform: translateY(-3px)
+}
+
+.btn.secondary:hover {
+  background: var(--accent-color);
+  color: #fff;
+  transform: translateY(-3px)
+}
+
+/* =========================================
+   SECTIONS & CARDS
+   ========================================= */
+.section {
+  padding: 3.5rem 0
+}
+
+#about h2,
+#education h2,
+#skills h2,
+#experience h2,
+#projects h2,
+#certs h2,
+#hobbies h2,
+#contact h2 {
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: var(--text-white);
+  border-left: 4px solid var(--accent-color);
+  padding-left: 1rem;
+  margin-bottom: 1.25rem
+}
+#about,
+#projects,
+#experience,
+#hobbies {
+  margin-top: 0 !important;
+  padding-top: 1.5rem !important; /* reduce if still feels too tall */
+}
+/* Card look */
+.card {
+  background: var(--card-dark);
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 1.6rem;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35)
+}
+
+/* EXPERIENCE / EDUCATION */
+.experience-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.2rem
+}
+
+.experience-item {
+  background: var(--card-dark);
+  padding: 1.25rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  transition: transform .3s ease, border-color .3s ease
+}
+
+.experience-item:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent-color)
+}
+
+.experience-item h3 {
+  font-size: 1.15rem;
+  color: var(--text-white)
+}
+
+.experience-item .date {
+  font-size: 0.9rem;
+  color: #9e9e9e;
+  margin-bottom: 0.4rem
+}
+
+.experience-item .tech-stack {
+  color: var(--accent-color);
+  font-weight: 600
+}
+
+/* Skills chips */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .6rem
+}
+
+.chips span {
+  background: #232323;
+  color: var(--text-white);
+  padding: .45rem .9rem;
+  border-radius: 999px;
+  font-size: .88rem;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  transition: all .22s ease
+}
+
+.chips span:hover {
+  background: var(--accent-color);
+  transform: translateY(-3px);
+  border-color: var(--accent-color)
+}
+
+/* =========================================
+   PROJECT GRID & CARDS (NEW)
+   ========================================= */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1rem
+}
+
+.project-card {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.00));
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  transition: transform .35s cubic-bezier(.2, .8, .2, 1), box-shadow .35s ease, border-color .35s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 230px;
+}
+
+.project-card:hover {
+  transform: scale(1.02);
+  border-color: var(--accent-color);
+  box-shadow: 0 10px 40px rgba(0, 229, 255, 0.12);
+}
+
+/* Project Title & Meta */
+.project-card .proj-title {
+  font-size: 1.15rem;
+  color: var(--text-white);
+  margin-bottom: .5rem
+}
+
+.project-card .meta {
+  color: #cfcfcf;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-top: 6px;
+  flex: 1
+}
+
+/* Tech tags inside project */
+.proj-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin: 0.6rem 0
+}
+
+.proj-tags span {
+  background: #222326;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 14px;
+  font-size: .8rem;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  transition: transform .22s ease, box-shadow .22s ease, background .22s ease;
+}
+
+.proj-tags span:hover {
+  transform: translateY(-4px);
+  background: var(--accent-color);
+  box-shadow: 0 6px 18px rgba(0, 229, 255, 0.12)
+}
+
+/* Buttons inside project */
+/* Project Buttons */
+.proj-buttons {
+
+  display: flex;
+  justify-content: center;
+  /* <-- Centers horizontally */
+  align-items: center;
+  margin-top: 1.2rem;
+}
+
+/* View Code Button (Blue Neon Style) */
+.btn-proj {
+  display: inline-flex;
+  align-items: center;
+
+  gap: .6rem;
+  padding: .55rem 1.1rem;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: .92rem;
+  border: 2px solid #00E5FF;
+  /* blue border */
+  color: #00E5FF;
+  /* blue text */
+  background: transparent;
+  transition: all .25s ease, transform .25s ease;
+  text-decoration: none;
+}
+
+
+/* GitHub Icon inside button */
+.icon-gh {
+  display: inline-block;
+  vertical-align: middle;
+  fill: currentColor;
+  transition: transform .18s ease;
+}
+
+/* Icon animation */
+.btn-proj:hover .icon-gh {
+  transform: translateY(-2px) scale(1.08);
+}
+
+/* meta small italic label if needed */
+.project-card .meta .meta-small {
+  display: block;
+  margin-top: 8px;
+  font-size: 0.82rem;
+  color: #9a9a9a;
+  font-style: italic
+}
+
+/* small polish: scroll padding so header doesn't overlap anchors */
+html {
+  scroll-padding-top: 120px;
+  scroll-behavior: smooth;
+}
+
+/* Remove bullets completely */
+.cert-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Each item with arrow before text */
+.cert-list li {
+  position: relative;
+  padding-left: 22px;   /* space for arrow */
+  margin-bottom: 12px;
+}
+
+/* THEME ARROW (uses accent color automatically) */
+.cert-list li::before {
+  content: "➤";                      /* the arrow symbol */
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #00E5FF;        /* matches your theme */
+  font-size: 1rem;
+  line-height: 1.2;
+}
+
+/* clickable certification links */
+.cert-list a {
+  color: var(--text-white);
+  transition: color .25s ease;
+}
+
+.cert-list a:hover {
+ color: #00E5FF;        /* blue hover */
+}
+
+:root{
+  --bg: #121212;
+  --card-bg: rgba(255,255,255,0.03);
+  --muted: rgba(255,255,255,0.65);
+  --accent: #3b82f6; /* blue (Tailwind blue-500) per your request */
+  --accent-weak: rgba(59,130,246,0.12);
+}
+
+/* Hobbies section */
+.hobbies-section {
+  padding: 3.2rem 0;
+  color: #ffffff;
+  background: transparent; /* keep page bg consistent */
+}
+
+.hobbies-section .section-header {
+  margin-bottom: 1.6rem;
+}
+
+.hobbies-section .section-title {
+  font-size: 1.9rem;
+  margin: 0 0 .25rem 0;
+  letter-spacing: -0.02em;
+}
+
+.hobbies-section .section-sub {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* grid */
+.hobbies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+/* card */
+.hobby-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 1.1rem;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+  border: 1px solid rgba(255,255,255,0.03);
+}
+
+/* icon */
+.hobby-icon {
+  width: 44px;
+  height: 44px;
+  display: inline-grid;
+  place-items: center;
+  font-size: 1.25rem;
+  border-radius: 10px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  align-self: flex-start;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+/* title & desc */
+.hobby-title {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.hobby-desc {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.4;
+}
+
+/* hover: blue accent (matching your certification hover change) */
+.hobby-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 30px rgba(11,14,22,0.6);
+  border-color: var(--accent-weak);
+}
+
+.hobby-card:focus-within {
+  outline: 2px solid rgba(59,130,246,0.16);
+  outline-offset: 4px;
+}
+
+/* make text wrap nicely and handle smaller screens */
+@media (max-width: 520px) {
+  .hobbies-section { padding: 2.2rem 0; }
+  .hobby-desc { font-size: 0.9rem; }
+}
+
+
+
+/* =========================================
+   CONTACT & FOOTER
+   ========================================= */
+.contact-container {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between
+}
+
+.contact-text {
+  flex: 1;
+  min-width: 260px
+}
+
+.social-links {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap
+}
+
+.social-link {
+  color: var(--text-body);
+  font-weight: 600;
+  border-bottom: 1px solid transparent
+}
+
+.social-link:hover {
+  color: var(--accent-color);
+  border-bottom: 1px solid var(--accent-color)
+}
+
+.site-footer {
+  background: transparent;
+  border-top: 1px solid rgba(255, 255, 255, 0.03);
+  padding: 2rem ;
+  text-align: center;
+  color: #8a8a8a;
+  font-size: 0.9rem;
+  margin-top: 2rem
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+@media (max-width:900px) {
+  .header-inner {
+    flex-direction: column;
+    align-items: center
+  }
+
+  .intro-inner {
+    flex-direction: column;
+    text-align: center
+  }
+
+  .intro-text {
+    text-align: center
+  }
+
+  .buttons {
+    justify-content: center
+  }
+
+  .container {
+    width: 92%
+  }
+}
+
+@media (max-width:600px) {
+  .intro-text h2 {
+    font-size: 1.8rem
+  }
+
+  .section {
+    padding: 2.2rem 0
+  }
+
+  .card {
+    padding: 1.25rem
+  }
+
+  .projects-grid {
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr))
+  }
+}
+
+/* Anchor scrolling: smooth + single, consistent offset for fixed header */
+html {
+  scroll-behavior: smooth; /* keep smooth scrolling but don't add a second offset */
+}
+
+/* Ensure sections scroll into view correctly under fixed header.
+   We set a single scroll-margin-top on each target section (includes #hobbies). */
+#home,
+#about,
+#education,
+#skills,
+#projects,
+#experience,
+#certs,
+#hobbies,
+#contact {
+  scroll-margin-top: calc(var(--header-height) + 8px);
+}
