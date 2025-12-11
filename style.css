@@ -1,3 +1,153 @@
+/* global reset + safe box-sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* prefer mobile-first scaling */
+html {
+  font-size: 16px;
+}
+
+/* base */
+body {
+  font-family: "Poppins", sans-serif;
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* make main container responsive */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  /* safe side padding on small screens */
+}
+
+/* images and embeds */
+img,
+picture,
+video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+
+
+
+/* header / hero */
+.header-title {
+  /* clamp keeps font responsive across devices */
+  font-size: clamp(1.25rem, 4.5vw, 2.5rem);
+  /* min, viewport-based, max */
+  line-height: 1.1;
+  margin-bottom: 0.25rem;
+}
+
+.header-sub {
+  font-size: clamp(0.75rem, 2.5vw, 1rem);
+  opacity: 0.9;
+}
+
+/* if your header is fixed at top, add body offset */
+.header-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+}
+
+body.header-has-fixed {
+  /* adjust this value to header's actual height (use devtools to verify) */
+  padding-top: 4.5rem;
+}
+
+
+
+
+
+/* nav basics */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.5rem 0;
+}
+
+.nav-links {
+  display: none;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* small-screen toggle button */
+.nav-toggle {
+  display: block;
+  border: none;
+  background: transparent;
+  font-size: 1rem;
+}
+
+/* show desktop nav from tablet up */
+@media (min-width:768px) {
+  .nav-toggle {
+    display: none;
+  }
+
+  .nav-links {
+    display: flex;
+  }
+}
+
+
+
+
+/* readable body text on small screens */
+.content p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+/* buttons more clickable on mobile */
+.btn {
+  padding: 0.55rem 0.9rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+
+/* project grid — single column mobile, auto-fit on larger screens */
+.grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+  /* mobile first */
+}
+
+@media (min-width:768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width:1200px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+
+
+
+
 /* =========================================
    1. GLOBAL / COLORS / FONTS
    ========================================= */
@@ -87,7 +237,8 @@ a:hover {
   right: 0;
   z-index: 5000;
   width: 100%;
-  background: #0f1113;  /* solid header */
+  background: #0f1113;
+  /* solid header */
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   padding: 1rem 0;
 }
@@ -249,13 +400,16 @@ a:hover {
   padding-left: 1rem;
   margin-bottom: 1.25rem
 }
+
 #about,
 #projects,
 #experience,
 #hobbies {
   margin-top: 0 !important;
-  padding-top: 1.5rem !important; /* reduce if still feels too tall */
+  padding-top: 1.5rem !important;
+  /* reduce if still feels too tall */
 }
+
 /* Card look */
 .card {
   background: var(--card-dark);
@@ -461,17 +615,20 @@ html {
 /* Each item with arrow before text */
 .cert-list li {
   position: relative;
-  padding-left: 22px;   /* space for arrow */
+  padding-left: 22px;
+  /* space for arrow */
   margin-bottom: 12px;
 }
 
 /* THEME ARROW (uses accent color automatically) */
 .cert-list li::before {
-  content: "➤";                      /* the arrow symbol */
+  content: "➤";
+  /* the arrow symbol */
   position: absolute;
   left: 0;
   top: 0;
-  color: #00E5FF;        /* matches your theme */
+  color: #00E5FF;
+  /* matches your theme */
   font-size: 1rem;
   line-height: 1.2;
 }
@@ -483,22 +640,25 @@ html {
 }
 
 .cert-list a:hover {
- color: #00E5FF;        /* blue hover */
+  color: #00E5FF;
+  /* blue hover */
 }
 
-:root{
+:root {
   --bg: #121212;
-  --card-bg: rgba(255,255,255,0.03);
-  --muted: rgba(255,255,255,0.65);
-  --accent: #3b82f6; /* blue (Tailwind blue-500) per your request */
-  --accent-weak: rgba(59,130,246,0.12);
+  --card-bg: rgba(255, 255, 255, 0.03);
+  --muted: rgba(255, 255, 255, 0.65);
+  --accent: #3b82f6;
+  /* blue (Tailwind blue-500) per your request */
+  --accent-weak: rgba(59, 130, 246, 0.12);
 }
 
 /* Hobbies section */
 .hobbies-section {
   padding: 3.2rem 0;
   color: #ffffff;
-  background: transparent; /* keep page bg consistent */
+  background: transparent;
+  /* keep page bg consistent */
 }
 
 .hobbies-section .section-header {
@@ -535,7 +695,7 @@ html {
   flex-direction: column;
   gap: .5rem;
   transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
-  border: 1px solid rgba(255,255,255,0.03);
+  border: 1px solid rgba(255, 255, 255, 0.03);
 }
 
 /* icon */
@@ -546,9 +706,9 @@ html {
   place-items: center;
   font-size: 1.25rem;
   border-radius: 10px;
-  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
   align-self: flex-start;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 /* title & desc */
@@ -567,19 +727,24 @@ html {
 /* hover: blue accent (matching your certification hover change) */
 .hobby-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 10px 30px rgba(11,14,22,0.6);
+  box-shadow: 0 10px 30px rgba(11, 14, 22, 0.6);
   border-color: var(--accent-weak);
 }
 
 .hobby-card:focus-within {
-  outline: 2px solid rgba(59,130,246,0.16);
+  outline: 2px solid rgba(59, 130, 246, 0.16);
   outline-offset: 4px;
 }
 
 /* make text wrap nicely and handle smaller screens */
 @media (max-width: 520px) {
-  .hobbies-section { padding: 2.2rem 0; }
-  .hobby-desc { font-size: 0.9rem; }
+  .hobbies-section {
+    padding: 2.2rem 0;
+  }
+
+  .hobby-desc {
+    font-size: 0.9rem;
+  }
 }
 
 
@@ -620,7 +785,7 @@ html {
 .site-footer {
   background: transparent;
   border-top: 1px solid rgba(255, 255, 255, 0.03);
-  padding: 2rem ;
+  padding: 2rem;
   text-align: center;
   color: #8a8a8a;
   font-size: 0.9rem;
@@ -672,9 +837,116 @@ html {
   }
 }
 
+
+/* Global reset + box sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Responsive base */
+html {
+  font-size: 16px;
+}
+
+/* adjust if needed */
+body {
+  font-family: "Poppins", sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Images and videos */
+img,
+picture,
+video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Simple responsive grid for cards/projects */
+.grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+  /* mobile: single column */
+}
+
+/* Cards */
+.card {
+  background: #0f0f0f;
+  padding: 1rem;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Flex row that wraps */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* Nav (simple responsive pattern) */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+}
+
+/* Hide desktop menu on small screens (example) */
+.nav-links {
+  display: none;
+}
+
+.nav-toggle {
+  display: block;
+}
+
+/* Medium and up — switch to multi-column / desktop nav */
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* 2 columns tablet+ */
+  .nav-links {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .nav-toggle {
+    display: none;
+  }
+}
+
+@media (min-width: 1200px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* 3 columns desktop */
+}
+
+
 /* Anchor scrolling: smooth + single, consistent offset for fixed header */
 html {
-  scroll-behavior: smooth; /* keep smooth scrolling but don't add a second offset */
+  scroll-behavior: smooth;
+  /* keep smooth scrolling but don't add a second offset */
 }
 
 /* Ensure sections scroll into view correctly under fixed header.
